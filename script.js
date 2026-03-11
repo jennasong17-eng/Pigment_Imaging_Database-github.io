@@ -1,54 +1,71 @@
-const form = document.getElementById('uploadForm');
-const gallery = document.getElementById('gallery');
+const uploadBtn = document.getElementById("uploadBtn");
+const gallery = document.getElementById("gallery");
 
-const modal = document.getElementById('modal');
-const modalImage = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDescription = document.getElementById('modalDescription');
-const modalAuthor = document.getElementById('modalAuthor');
-const closeBtn = document.querySelector('.close');
+uploadBtn.addEventListener("click", function(){
 
-function loadGallery() {
-  const images = JSON.parse(localStorage.getItem('images')) || [];
-  gallery.innerHTML = '';
+const file = document.getElementById("imageInput").files[0];
+const title = document.getElementById("titleInput").value;
+const desc = document.getElementById("descInput").value;
 
-  images.forEach((img, index) => {
-    const div = document.createElement('div');
-    div.className = 'image-card';
-    div.innerHTML = `<img src="${img.data}" alt="${img.title}">`;
-    div.addEventListener('click', () => openModal(img));
-    gallery.appendChild(div);
-  });
+if(!file){
+alert("Please select an image");
+return;
 }
 
-form.addEventListener('submit', e => {
-  e.preventDefault();
+const reader = new FileReader();
 
-  const file = document.getElementById('imageInput').files[0];
-  const title = document.getElementById('title').value;
-  const description = document.getElementById('description').value;
-  const author = document.getElementById('author').value;
+reader.onload = function(event){
 
-  const reader = new FileReader();
-  reader.onload = () => {
-    const images = JSON.parse(localStorage.getItem('images')) || [];
-    images.push({ data: reader.result, title, description, author });
-    localStorage.setItem('images', JSON.stringify(images));
-    loadGallery();
-    form.reset();
-  };
-  reader.readAsDataURL(file);
+const imgData = {
+url: event.target.result,
+title: title,
+desc: desc
+};
+
+let images = JSON.parse(localStorage.getItem("images")) || [];
+images.push(imgData);
+localStorage.setItem("images", JSON.stringify(images));
+
+displayImages();
+
+};
+
+reader.readAsDataURL(file);
+
 });
 
-function openModal(img) {
-  modalImage.src = img.data;
-  modalTitle.textContent = img.title || "Untitled";
-  modalDescription.textContent = img.description || "";
-  modalAuthor.textContent = "By: " + (img.author || "Unknown");
-  modal.style.display = 'block';
+function displayImages(){
+
+gallery.innerHTML = "";
+
+let images = JSON.parse(localStorage.getItem("images")) || [];
+
+images.forEach(function(data){
+
+const img = document.createElement("img");
+img.src = data.url;
+
+img.addEventListener("click", function(){
+openModal(data);
+});
+
+gallery.appendChild(img);
+
+});
+
 }
 
-closeBtn.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if (e.target === modal) modal.style.display = 'none'; }
+function openModal(data){
 
-window.onload = loadGallery;
+document.getElementById("modal").style.display = "block";
+document.getElementById("modalImg").src = data.url;
+document.getElementById("modalTitle").innerText = data.title;
+document.getElementById("modalDesc").innerText = data.desc;
+
+}
+
+document.getElementById("closeBtn").onclick = function(){
+document.getElementById("modal").style.display = "none";
+};
+
+displayImages();
