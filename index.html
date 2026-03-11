@@ -1,47 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Database</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Image Archive</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>Image Database</h1>
-  </header>
 
-  <main>
-    <section class="upload-section">
-      <h2>Upload New Image</h2>
-      <form id="uploadForm">
-        <input type="file" id="imageInput" accept="image/*" required>
-        <input type="text" id="title" placeholder="Title">
-        <textarea id="description" placeholder="Description"></textarea>
-        <input type="text" id="author" placeholder="Author">
-        <button type="submit">Upload</button>
-      </form>
-    </section>
+<header>
+<h1>Image Archive</h1>
+</header>
 
-    <section class="gallery-section">
-      <h2>Gallery</h2>
-      <div id="gallery" class="gallery"></div>
-    </section>
-  </main>
+<section class="upload-section">
+<h2>Upload Image</h2>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="">
-      <div class="modal-info">
-        <h3 id="modalTitle"></h3>
-        <p id="modalDescription"></p>
-        <small id="modalAuthor"></small>
-      </div>
-    </div>
-  </div>
+<input type="file" id="imageUpload">
+<input type="text" id="titleInput" placeholder="Image title">
+<textarea id="descInput" placeholder="Description"></textarea>
 
-  <script src="script.js"></script>
+<button onclick="uploadImage()">Upload</button>
+</section>
+
+<section class="gallery" id="gallery"></section>
+
+<div id="modal" class="modal">
+<span class="close" onclick="closeModal()">×</span>
+<img id="modalImg">
+<h2 id="modalTitle"></h2>
+<p id="modalDesc"></p>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+<script src="firebase.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
