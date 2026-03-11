@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>Image Archive</title>
@@ -12,30 +13,25 @@
 <h1>Image Archive</h1>
 </header>
 
-<section class="upload-section">
-<h2>Upload Image</h2>
+<section class="upload">
 
-<input type="file" id="imageUpload">
-<input type="text" id="titleInput" placeholder="Image title">
+<input type="file" id="imageInput">
+<input type="text" id="titleInput" placeholder="Title">
 <textarea id="descInput" placeholder="Description"></textarea>
 
-<button onclick="uploadImage()">Upload</button>
+<button id="uploadBtn">Upload</button>
+
 </section>
 
-<section class="gallery" id="gallery"></section>
+<section id="gallery" class="gallery"></section>
 
 <div id="modal" class="modal">
-<span class="close" onclick="closeModal()">×</span>
+<span id="closeBtn">&times;</span>
 <img id="modalImg">
 <h2 id="modalTitle"></h2>
 <p id="modalDesc"></p>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-
-<script src="firebase.js"></script>
 <script src="script.js"></script>
 
 </body>
