@@ -1,141 +1,47 @@
-/* General */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  margin: 0;
-  padding: 20px;
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Database</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Image Database</h1>
+  </header>
 
-header h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
+  <main>
+    <section class="upload-section">
+      <h2>Upload New Image</h2>
+      <form id="uploadForm">
+        <input type="file" id="imageInput" accept="image/*" required>
+        <input type="text" id="title" placeholder="Title">
+        <textarea id="description" placeholder="Description"></textarea>
+        <input type="text" id="author" placeholder="Author">
+        <button type="submit">Upload</button>
+      </form>
+    </section>
 
-h2 {
-  margin-bottom: 15px;
-  color: #222;
-}
+    <section class="gallery-section">
+      <h2>Gallery</h2>
+      <div id="gallery" class="gallery"></div>
+    </section>
+  </main>
 
-/* Form */
-.upload-section form {
-  display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  gap: 10px;
-  margin: 0 auto 40px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="">
+      <div class="modal-info">
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription"></p>
+        <small id="modalAuthor"></small>
+      </div>
+    </div>
+  </div>
 
-input[type="text"], input[type="file"], textarea, button {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-textarea {
-  resize: vertical;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.image-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 10px;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.image-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
-}
-
-.image-card img {
-  width: 100%;
-  max-height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-/* Modal */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1000; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.7);
-}
-
-.modal-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #fff;
-  margin: 5% auto;
-  padding: 20px;
-  max-width: 90%;
-  border-radius: 10px;
-  gap: 20px;
-}
-
-.modal-content img {
-  max-width: 400px;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-.modal-info {
-  max-width: 300px;
-}
-
-.modal-info h3 {
-  margin-top: 0;
-}
-
-.close {
-  color: #aaa;
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #000;
-}
+  <script src="script.js"></script>
+</body>
+</html>
