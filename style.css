@@ -1,129 +1,56 @@
-/* Global page style */
-
-body {
-  margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  background: #ffffff;
-  color: #111;
+body{
+font-family: Arial, Helvetica, sans-serif;
+margin:0;
+background:white;
 }
 
-
-/* Header */
-
-header {
-  text-align: center;
-  padding: 40px 20px;
+header{
+text-align:center;
+padding:40px;
 }
 
-header h1 {
-  font-size: 32px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  margin: 0;
+.upload{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:10px;
+padding:20px;
 }
 
-
-/* Upload section */
-
-.upload {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+gap:20px;
+padding:40px;
 }
 
-.upload input,
-.upload textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  font-size: 14px;
+.gallery img{
+width:100%;
+cursor:pointer;
 }
 
-.upload textarea {
-  resize: vertical;
-  min-height: 80px;
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+padding:40px;
 }
 
-.upload button {
-  padding: 12px;
-  border: none;
-  background: black;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
+.modal img{
+max-width:80%;
+display:block;
+margin:auto;
 }
 
-.upload button:hover {
-  opacity: 0.85;
-}
-
-
-/* Gallery grid */
-
-.gallery {
-  padding: 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 25px;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  transition: opacity 0.25s ease;
-}
-
-.gallery img:hover {
-  opacity: 0.75;
-}
-
-
-/* Modal viewer */
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background: white;
-  overflow: auto;
-  padding: 60px 20px;
-}
-
-.modal img {
-  display: block;
-  max-width: 85%;
-  margin: auto;
-}
-
-.modal h2 {
-  text-align: center;
-  margin-top: 30px;
-  font-weight: 500;
-}
-
-.modal p {
-  max-width: 700px;
-  margin: 10px auto;
-  text-align: center;
-  line-height: 1.6;
-}
-
-
-/* Close button */
-
-#closeBtn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  cursor: pointer;
+#closeBtn{
+position:absolute;
+right:40px;
+top:20px;
+font-size:40px;
+cursor:pointer;
 }
