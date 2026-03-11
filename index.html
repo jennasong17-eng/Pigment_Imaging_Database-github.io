@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <meta charset="UTF-8">
-<title>Image Archive</title>
+<title>Image Gallery</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,17 +13,17 @@
 <h1>Image Archive</h1>
 </header>
 
-<section class="upload">
+<div class="upload">
 
 <input type="file" id="imageInput">
-<input type="text" id="titleInput" placeholder="Title">
-<textarea id="descInput" placeholder="Description"></textarea>
+<input type="text" id="titleInput" placeholder="Image title">
+<textarea id="descInput" placeholder="Image description"></textarea>
 
 <button id="uploadBtn">Upload</button>
 
-</section>
+</div>
 
-<section id="gallery" class="gallery"></section>
+<div id="gallery" class="gallery"></div>
 
 <div id="modal" class="modal">
 <span id="closeBtn">&times;</span>
