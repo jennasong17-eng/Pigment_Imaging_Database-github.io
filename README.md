@@ -1,4 +1,4 @@
-# Image Database (GitHub Pages)
+# Pigment Image Database (GitHub Pages)
 
 Simple image database that runs entirely in the browser.
 
